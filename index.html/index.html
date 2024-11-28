@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>행사 사진 모음</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1em 0;
+        }
+        .gallery-container {
+            max-width: 1200px;
+            margin: 20px auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* 반응형 그리드 */
+            gap: 10px;
+            padding: 0 10px;
+        }
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        .gallery-item img:hover {
+            transform: scale(1.1); /* 이미지 확대 효과 */
+        }
+        .gallery-item p {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: 0;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.6);
+            color: #fff;
+            font-size: 14px;
+            text-align: center;
+        }
+        .hidden-gallery {
+            display: none;
+            margin: 20px 0;
+            text-align: center;
+        }
+        .hidden-gallery img {
+            width: 300px;
+            margin: 10px;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+        .hidden-gallery img:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>3월 행사 사진 모음</h1>
+        <p>사진을 클릭하면 추가 사진이 표시됩니다!</p>
+    </header>
+
+    <div class="gallery-container">
+        <!-- 첫 번째 사진 -->
+        <div class="gallery-item" onclick="showMorePhotos('event1')">
+            <!-- 수정된 부분: onclick 속성의 매개변수를 'event1'로 변경 -->
+            <img src="images/11.jpg" alt="행사 1">
+            <p>3.1운동 기념 모임</p>
+        </div>
+
+        <!-- 두 번째 사진 -->
+        <div class="gallery-item" onclick="showMorePhotos('event2')">
+            <!-- 수정된 부분: onclick 속성의 매개변수를 'event2'로 변경 -->
+            <img src="images/11.jpg" alt="행사 2">
+            <p>연행스</p>
+        </div>
+
+        <!-- 세 번째 사진 -->
+        <div class="gallery-item" onclick="showMorePhotos('event3')">
+            <!-- 수정된 부분: onclick 속성의 매개변수를 'event3'로 변경 -->
+            <img src="images/11.jpg" alt="행사 3">
+            <p>고등 영어프레젠테이션 대회</p>
+        </div>
+
+         <!-- 네 번째 사진 -->
+         <div class="gallery-item" onclick="showMorePhotos('event4')">
+            <!-- 수정된 부분: onclick 속성의 매개변수를 'event4'로 변경 -->
+            <img src="images/11.jpg" alt="행사 4">
+            <p>웹진 기자단 모집</p>
+        </div>
+
+        <!-- 다섯 번째 사진 -->
+        <div class="gallery-item" onclick="showMorePhotos('event5')">
+        <!-- 수정된 부분: onclick 속성의 매개변수를 'event5'로 변경 -->
+        <img src="images/11.jpg" alt="행사 5">
+        <p>중등 과학의달 행사</p>
+        </div>
+        
+    </div>
+
+    <!-- 숨겨진 사진 컨테이너 -->
+    <div id="event1" class="hidden-gallery">
+        <h3>3.1운동 기념 모임 - 사진</h3>
+        <img src="images/13.jpg" alt="개학식 사진 2">
+    </div>
+
+    <div id="event2" class="hidden-gallery">
+        <h3>연행스 - 사진</h3>
+        <img src="images/18.jpg" alt="3.1운동 사진 1">
+        <img src="images/19.jpg" alt="3.1운동 사진 2">
+    </div>
+
+    <div id="event3" class="hidden-gallery">
+        <h3>고등 영어프레젠테이션 대회 - 사진</h3>
+        <img src="images/14.jpg" alt="프레젠테이션 사진 1">
+        <img src="images/20.jpg" alt="프레젠테이션 사진 2">
+    </div>
+
+    <div id="event4" class="hidden-gallery">
+        <h3>웹진 기자단 모집 - 사진</h3>
+        <img src="images/15.jpg" alt="프레젠테이션 사진 1">
+        <img src="images/10.jpg" alt="프레젠테이션 사진 2">
+        <img src="images/21.jpg" alt="프레젠테이션 사진 3">
+    </div>
+    
+    <div id="event5" class="hidden-gallery">
+        <h3>중등 과학의달 행사- 사진</h3>
+        <img src="images/16.jpg" alt="프레젠테이션 사진 1">
+    </div>    
+    
+    </div> 
+
+    </div> 
+
+    <footer>
+        &copy; 2024 행사 사진 모음 | Made with 김경락
+    </footer>
+
+    <script>
+        // 추가 사진 표시 함수
+        function showMorePhotos(eventId) {
+            const galleries = document.querySelectorAll('.hidden-gallery');
+            galleries.forEach(gallery => {
+                if (gallery.id === eventId) {
+                    gallery.style.display = gallery.style.display === 'block' ? 'none' : 'block';
+                } else {
+                    gallery.style.display = 'none'; // 다른 갤러리는 숨김
+                }
+            });
+        }
+    </script>
+</body>
+</html>
